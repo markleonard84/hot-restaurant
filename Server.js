@@ -17,9 +17,7 @@ app.get("/:customers", (req, res) => {
   console.log(chosen);
   res.end();
 });
-// Create one more data entry for the character Obi Wan Kenobi.
-// Enter any values you like for the parameters following the same format as the Yoda and Darth Maul character
-//
+
 
 
 
