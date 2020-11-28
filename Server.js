@@ -13,15 +13,15 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
-var customers = [];
-var waitlist = [];
+//var customers = [];
 
 // Data
 // ===========================================================
-var topFive = [{
+var customers = [{
   name: 'sandy',
   email: 'test@gmail.com',
   phone: 11111111111,
+  id: 1,
 }, {
   name: 'mark',
   email: 'test1@gmail.com',
@@ -30,14 +30,17 @@ var topFive = [{
   name: 'shivey',
   email: 'test3@gmail.com',
   phone: 11111111111,
+  id: 2,
 }, {
   name: 'john',
   email: 'test4@gmail.com',
   phone: 11111111111,
+  id: 3,
 }, {
   name: 'rekha',
   email: 'test5@gmail.com',
   phone: 11111111111,
+  id: 4,
 }];
 
 
@@ -78,8 +81,8 @@ app.get("/app.js", function(req, res) {
 //====== Post for user request (reservation)
 app.post("/tables", function(req, res) {
   var newCustomer = req.body;
- // console.log(newCustomer);
-  topFive.push(newCustomer);
+  console.log(newCustomer);
+  customers.push(newCustomer);
   res.json(newCustomer);
 });
 
