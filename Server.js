@@ -61,11 +61,11 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"))
 });
 
-app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"))
+app.get("/page/reservation", function(req, res) {
+    res.sendFile(path.join(__dirname, "reservation.html"))
 });
 
-app.get("/tables", function(req, res) {
+app.get("/page/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"))
 });
 
