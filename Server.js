@@ -11,6 +11,9 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
+var customers = [];
+var waitlist = [];
+
 // Data
 // ===========================================================
 var topFive = [{
