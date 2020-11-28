@@ -75,6 +75,13 @@ app.get("/app.js", function(req, res) {
 });
 
 
+//====== Post for user request (reservation)
+app.post("/tables", function(req, res) {
+  var newCustomer = req.body;
+ // console.log(newCustomer);
+  topFive.push(newCustomer);
+  res.json(newCustomer);
+});
 
 
 
