@@ -3,7 +3,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
-let sql = require("mysql");
+
 
 
 let app = express();
