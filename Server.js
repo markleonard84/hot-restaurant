@@ -1,96 +1,64 @@
 // Dependencies
 // ===========================================================
-var express = require("express");
-var path = require("path");
+let express = require("express");
+let bodyParser = require("body-parser");
+let path = require("path");
+
 
 var app = express();
+var port = process.env.PORT || 3000;
 
-var PORT = 3000;
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.urlencoded({
-    extended: true
-}));
-
-app.use(express.json());
-
-//var customers = [];
-
-// Data
-// ===========================================================
-var customers = [{
-  name: 'sandy',
-  email: 'test@gmail.com',
-  phone: 11111111111,
-  id: 1,
-}, {
-  name: 'mark',
-  email: 'test1@gmail.com',
-  phone: 11111111111,
-}, {
-  name: 'shivey',
-  email: 'test3@gmail.com',
-  phone: 11111111111,
-  id: 2,
-}, {
-  name: 'john',
-  email: 'test4@gmail.com',
-  phone: 11111111111,
-  id: 3,
-}, {
-  name: 'rekha',
-  email: 'test5@gmail.com',
-  phone: 11111111111,
-  id: 4,
-}];
-
-
-app.get("/:customers", (req, res) => {
-    var chosen = req.params.customers;
-    // What does this log?
-    console.log(chosen);
-    res.end();
-});
-
-
-
-
+var customers = [];
+var waitlist = [];
 
 //routes.
-
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"))
+app.get('/', function(req,res) {
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"))
+app.get('/tables', function(req, res) {
+	res.sendFile(path.join(__dirname, 'tables.html'));
 });
 
-app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"))
+app.get('/reserve', function(req, res) {
+	res.sendFile(path.join(__dirname, 'reservation.html'))
 });
 
-app.get("/api/reservations", function(req, res) {
-    return res.json(reservations);
+app.get('/api/tables', function(req, res) {
+
+	return res.json(customers);
 });
 
-app.get("/app.js", function(req, res) {
-    res.sendFile(path.join(__dirname, "app.js"))
-});
+app.get('/api/waitlist', function(req, res) {
 
+	return res.json(waitlist);
+});
 
 //====== Post for user request (reservation)
-app.post("/tables", function(req, res) {
-  var newCustomer = req.body;
-  console.log(newCustomer);
-  customers.push(newCustomer);
-  res.json(newCustomer);
+app.post('/api/clear', function(req, res) {
+	customers = [];
+	waitlist = [];
 });
 
-
-
+app.post('/api/new', function(req, res) {
+	console.log('Works');
+	var newCustomer = req.body;
+	if (customers.length >= 5) {
+		waitlist.push(newCustomer);
+	} else {
+		customers.push(newCustomer);
+	}
+	res.json(newCustomer);
+});
 
 // Listener
 // ===========================================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+app.listen(port, function() {
+  console.log("App listening on PORT " + port);
 });
