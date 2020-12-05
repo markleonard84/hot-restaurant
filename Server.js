@@ -6,8 +6,8 @@ let path = require("path");
 let sql = require("mysql");
 
 
-var app = express();
-var port = process.env.PORT || 3000;
+let app = express();
+let port = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-var customers = [];
-var waitlist = [];
+let customers = [];
+let waitlist = [];
 
 //routes.
 app.get('/', function(req,res) {
