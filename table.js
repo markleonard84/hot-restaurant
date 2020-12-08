@@ -5,4 +5,8 @@ let connection = mysql.createConnection({
   user: "root",
   password: "root",
   database: "Customers",
-});
+  
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});});
