@@ -6,14 +6,13 @@ USE hot_restaurant;
 
 CREATE TABLE customers
 (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     last_name VARCHAR(30),
     first_name VARCHAR(30),
     email_address VARCHAR(50),
-    contact_number INT
+    contact_number VARCHAR(40)
     
 );
-
 
 
 INSERT INTO customers (last_name, first_name, email_address, contact_number)
