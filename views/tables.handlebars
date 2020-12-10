@@ -1,0 +1,54 @@
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Hot Restaurant</h1>
+      <hr class="my-4">
+      <h2>Current Reservations & Waiting List</h2>
+      <a class="btn btn-primary btn-lg" href="reserve" role="button">Make a Reservation</a>
+      <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <table class="table table-bordered" id="reservedTable">
+      <p>Current Reservations</p>
+      <thead>
+        <tr>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">ID</th>
+        </tr>
+      </thead>
+      <tbody>
+            {{#each customers }}
+        <tr>
+          <td>{{first_name}}</td>
+          <td>{{last_name}}</td>
+          <td>{{id}}</td>
+        </tr>
+            {{/each}}
+      </tbody>
+    </table>
+
+    <table class="table table-bordered" id="waitingList">
+      <p>Waiting List</p>
+      <thead>
+        <tr>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">ID</th>
+        </tr>
+      </thead>
+      <tbody>
+            {{#each waitlist }}
+        <tr>
+          <td>{{first_name}}</td>
+          <td>{{last_name}}</td>
+          <td>{{id}}</td>
+        </tr>
+            {{/each}}
+      </tbody>
+      
+    </table>
+
+</div>
