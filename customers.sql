@@ -1,11 +1,22 @@
-/*CREATE TABLE Customers (
-    CustomerID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    EmailAddress varchar(255),
-    ContactNumber varchar(255)
-);*/
-INSERT INTO Customers (LastName, FirstName, EmailAddress, ContactNumber)
+DROP DATABASE IF EXISTS hot_restaurant;
+
+CREATE DATABASE hot_restaurant;
+
+USE hot_restaurant;
+
+CREATE TABLE customers
+(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    last_name VARCHAR(30),
+    first_name VARCHAR(30),
+    email_address VARCHAR(50),
+    contact_number INT
+    
+);
+
+
+
+INSERT INTO customers (last_name, first_name, email_address, contact_number)
 VALUES ('Capone', 'Al', 'alcapone@gmail.com', '07866666666'),
 ('Presley', 'Elvis', 'bigel@gmail.com', '07855555555'),
 ('Shakur', 'Tupac', '2pac@gmail.com', '07844444444'),
