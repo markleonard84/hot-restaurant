@@ -4,8 +4,6 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
 
-
-
 let app = express();
 let port = process.env.PORT || 3000;
 
@@ -20,7 +18,7 @@ let waitlist = [];
 
 //routes.
 app.get('/', function(req,res) {
-	res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 app.get('/tables', function(req, res) {
@@ -28,7 +26,7 @@ app.get('/tables', function(req, res) {
 });
 
 app.get('/reserve', function(req, res) {
-	res.sendFile(path.join(__dirname, 'reservation.html'))
+	res.sendFile(path.join(__dirname, 'reservation.html'));
 });
 
 app.get('/api/tables', function(req, res) {
