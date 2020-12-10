@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -9,11 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Hot Restaurant Reservations</title>
-  <meta name="description" content="" />
+  <meta name="description" content="The best restaurant in town" />
 </head>
 
 <body>
-
   <!-- ==================================== Header ========================================== -->
   <div class="jumbotron">
     <div class="container">
@@ -24,7 +22,6 @@
       <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
     </div>
   </div>
-
   <!-- ==================================== Input Table ========================================== -->
   <div class="container">
     <form>
@@ -62,10 +59,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script>
-
     $('#submitBtn').on('click', (event) => {
       event.preventDefault();
-  
+
       const newReservation = {
         customerName: $('#inputName').val(),
         phone: $('#inputPhone').val(),
@@ -74,20 +70,19 @@
       };
 
       $.ajax({
-        type: "POST",
+        type: 'POST',
         url: '/api/new',
         data: newReservation,
-        success: function(data) {
+        success: function (data) {
           alert(`Reservation received ${data.customerName}`)
         },
-        error: function() {
+        error: function () {
           alert('error sending data')
         }
       });
     });
 
   </script>
-
 </body>
 
 </html>
