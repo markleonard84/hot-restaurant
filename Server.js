@@ -3,6 +3,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
+const {getCustomerBooking} = require("../table");
 
 let app = express();
 let port = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 let customers = [];
 let waitlist = [];
+
 
 //routes.
 app.get('/', function(req,res) {
@@ -40,10 +42,16 @@ app.get('/api/waitlist', function(req, res) {
 });
 
 //====== Post for user request (reservation)
-app.post('/api/clear', function(req, res) {
-	customers = [];
-	waitlist = [];
-});
+
+app.get("/api/tables",(req, res) => {
+	getCustomerBooking().then(function(dbData){
+	  console.log("dbData 1 =", dbData);
+	  res.json(dbData);
+	})
+	.catch(function(err){
+	  console.log("Error please try again", err);
+	})});
+	
 
 app.post('/api/new', function(req, res) {
 	console.log('Works');
