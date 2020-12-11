@@ -4,9 +4,14 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
 const {getCustomerBooking} = require("../table");
+const exphbs = require("express-handlebars");
 
 let app = express();
 let port = process.env.PORT || 3000;
+
+// Set Handlebars as the default templating engine.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
