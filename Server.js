@@ -10,6 +10,7 @@ let app = express();
 let port = process.env.PORT || 3000;
 
 // Set Handlebars as the default templating engine.
+app.set("views", path.join(__dirname, "views"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -28,9 +29,12 @@ app.get('/', function(req,res) {
 	res.sendFile(path.join(__dirname, 'home.html'));
 });
 
-app.get('/tables', function(req, res) {
-	res.sendFile(path.join(__dirname, 'tables.html'));
-});
+app.get("/tables", function (req, res) {
+	res.render("tables", {
+	  customers,
+	  waitlist,
+	});
+  });
 
 app.get('/reserve', function(req, res) {
 	res.sendFile(path.join(__dirname, 'reservation.html'));
