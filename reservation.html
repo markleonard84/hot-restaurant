@@ -26,9 +26,16 @@
   <div class="container">
     <form>
       <div class="form-group row">
-        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+        <label for="inputFistName" class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm-10">
-          <input type="name" class="form-control" id="inputName">
+          <input type="name" class="form-control" id="inputFistName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputSurname" class="col-sm-2 col-form-label">Surname</label>
+        <div class="col-sm-10">
+          <input type="name" class="form-control" id="inputSurname">
         </div>
       </div>
 
@@ -63,10 +70,11 @@
       event.preventDefault();
 
       const newReservation = {
-        customerName: $('#inputName').val(),
-        phone: $('#inputPhone').val(),
-        customerEmail: $('#inputEmail').val(),
-        customerID: $('#inputId').val()
+        first_name: $('#inputFistName').val(),
+        last_name: $('#inputSurname').val(),
+        contact_number: $('#inputPhone').val(),
+        email_address: $('#inputEmail').val(),
+        id: $('#inputId').val()
       };
 
       $.ajax({
@@ -74,7 +82,7 @@
         url: '/api/new',
         data: newReservation,
         success: function (data) {
-          alert(`Reservation received ${data.customerName}`)
+          alert(`Reservation received ${data.first_name}`)
         },
         error: function () {
           alert('error sending data')
