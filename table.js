@@ -2,19 +2,17 @@ require('dotenv').config();
 const mysql = require("mysql");
 const connection = mysql.createConnection({
   host: "localhost",
-  port: 3306,
-  user: "root",
-  password: process.env.password,
-  database: "hot_restaurant",
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
   
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  
-  console.table([customers]);
-});
+  });
 
 getCustomerBooking = () => {
   return new Promise(function(resolve, reject){
