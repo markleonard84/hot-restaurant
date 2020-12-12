@@ -3,7 +3,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
-const {getCustomerBooking} = require("../table");
+const {getCustomerBooking} = require("./table");
 const exphbs = require("express-handlebars");
 
 let app = express();
